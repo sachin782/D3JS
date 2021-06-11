@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>D3JS SELECT DEMO</title>
+    <style>
+    /* Applied to all <p> tags */
+	p {
+	  color: blue;
+	}
+
+	/* Applied to all tags with the class "red" */
+	.red {
+	  background: red;
+	}
+
+	/* Applied to the tag with the id "some-id" */
+	#some-id {
+	  font-style: italic;
+	}
+
+	/* Applied only to <p> tags that are inside <li> tags */
+	li p {
+	  color: #0C0;
+	}
+  </style>
+  <script type="text/javascript" src="d3.min.js"></script>
+  </head>
+  <body>
+    MAIN CONTENT GOES HERE
+    <div>
+      <p>Normal paragraph</p><!-This would be changed later->
+
+      <p class="red">Red paragraph</p><!-This would be changed later->
+    </div>
+
+    <ol>
+      <li id="some-id">Unique element</li>
+      <li>Another list element</li>
+      <li>
+        <p>Paragraph inside list element</p>
+        <p>Second paragraph</p>
+      </li>
+	</ol>
+	<script>
+	// D3 Selection API
+	var s = d3.select('p'); // select() only finds one
+	// 1
+	s.text("First changed p tag is this....");
+	var allp = d3.selectAll('p').size(); // selectAll() finds all
+	// 4
+	alert(allp);
+	var reds = d3.selectAll('.red');
+	// [ > Array[1] ]
+	reds.text("New Paragraph");
+	// "Red paragraph"
+
+	</script>
+  </body>
+</html>
